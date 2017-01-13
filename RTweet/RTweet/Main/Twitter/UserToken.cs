@@ -9,12 +9,12 @@ namespace RTweet.Main.Twitter {
 		/// <summary>
 		/// ユーザーの数値ID
 		/// </summary>
-		public string Id { get; private set; }
+		public long Id { get; private set; }
 
 		/// <summary>
 		/// ユーザーの名前(@ID)
 		/// </summary>
-		public string Screen_name => Tokens.ScreenName;
+		public string ScreenName => Tokens.ScreenName;
 
 		
 
@@ -42,7 +42,8 @@ namespace RTweet.Main.Twitter {
 		/// <param name="id">ユーザーID</param>
 		/// <param name="accessToken">アクセストークン</param>
 		/// <param name="tokenSecret">シークレットアクセストークン</param>
-		public UserToken(string id, string accessToken, string tokenSecret, Tokens tokens = null) {
+		/// <param name="tokens">トークンオブジェクト デフォルトでnull</param>
+		public UserToken(long id, string accessToken, string tokenSecret, Tokens tokens = null) {
 			Id = id;
 			AccessToken = accessToken;
 			TokenSecret = tokenSecret;
@@ -50,6 +51,8 @@ namespace RTweet.Main.Twitter {
 		}
 
 
-
+		public override string ToString() {
+			return Id.ToString();
+		}
 	}
 }

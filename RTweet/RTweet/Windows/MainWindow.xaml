@@ -3,10 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TwitterClient"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="390" Width="555">
     <Grid>
-        
+        <Menu VerticalAlignment="Top">
+            <MenuItem Header="設定"/>
+        </Menu>
+        <ComboBox x:Name="UserList" HorizontalAlignment="Left" Margin="115,23,0,0" VerticalAlignment="Top" Width="417">
+        </ComboBox>
+        <Image x:Name="UserImage" HorizontalAlignment="Left" Margin="10,23,0,236" Width="100"/>
     </Grid>
 </Window>
