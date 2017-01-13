@@ -45,6 +45,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -64,6 +65,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Main\Config.cs" />
+    <Compile Include="Main\HotKey.cs" />
     <Compile Include="Main\Twitter\TwitterSystem.cs" />
     <Compile Include="Main\Twitter\UserToken.cs" />
     <Compile Include="Windows\Dialog\PinInputDialog.xaml.cs">
