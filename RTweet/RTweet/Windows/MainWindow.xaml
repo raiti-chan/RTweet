@@ -4,14 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
         Title="MainWindow" Height="390" Width="555">
     <Grid>
         <Menu VerticalAlignment="Top">
             <MenuItem Header="設定"/>
         </Menu>
-        <ComboBox x:Name="UserList" HorizontalAlignment="Left" Margin="115,23,0,0" VerticalAlignment="Top" Width="417">
+        <ComboBox x:Name="UserList" HorizontalAlignment="Left" Margin="115,23,0,0" VerticalAlignment="Top" Width="417" SelectionChanged="UserList_OnSelectionChanged">
         </ComboBox>
         <Image x:Name="UserImage" HorizontalAlignment="Left" Margin="10,23,0,236" Width="100"/>
-        <Button x:Name="AddUser" Content="＋" Margin="510,50,0,0" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="22"/>
+        <Button x:Name="AddUser" Content="＋" Margin="510,50,0,0" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="22" Click="AddUser_Click" />
     </Grid>
 </Window>

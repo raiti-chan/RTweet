@@ -91,6 +91,26 @@ namespace RTweet.Main.Twitter {
 			IsInitialized = true;
 		}
 
+		public void AddUser() {
+			var token = GetTokens(true);
+			if (token == null) return;
+			var u = new UserToken(token.UserId, token.AccessToken, token.AccessTokenSecret, token);
+			UsetList.Add(u);
+
+			using (var sw = new StreamWriter(@"Keys.dat", false, Encoding.UTF8)) {
+				foreach (var user in UsetList) {
+					sw.WriteLine(user.Id);
+					sw.WriteLine(user.AccessToken);
+					sw.WriteLine(user.TokenSecret);
+				}
+			}
+
+		}
+
+		public void ChengeUser(UserToken token) {
+			ActiveUser = token;
+		}
+
 		private static Tokens GetTokens(bool canCancel) {
 			var session = OAuth.Authorize(ApiKey, ApiSecret);
 			System.Diagnostics.Process.Start(session.AuthorizeUri.AbsoluteUri); //認証ページを既定のブラウザで開く
@@ -107,5 +127,8 @@ namespace RTweet.Main.Twitter {
 				return null;
 			}
 		}
+
+
+
 	}
 }

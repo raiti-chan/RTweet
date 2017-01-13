@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using RTweet.Main.Twitter;
 using static RTweet.Main.Twitter.TwitterSystem;
@@ -34,6 +35,30 @@ namespace RTweet.Windows{
 
 			UserList.ItemsSource = Instance.UsetList;
 			UserList.Text = Instance.ActiveUser.ScreenName;
+			var userIcon = new BitmapImage();
+			userIcon.BeginInit();
+			userIcon.UriSource = new Uri(Path.GetFullPath(Instance.ActiveUser.ProfileImgPath));
+			userIcon.EndInit();
+			UserImage.Source = userIcon;
+		}
+
+		/// <summary>
+		/// ユーザー追加ボタン
+		/// </summary>
+		/// <param name="sender">sender</param>
+		/// <param name="e">event</param>
+		private void AddUser_Click(object sender, System.Windows.RoutedEventArgs e) {
+			Instance.AddUser();
+		}
+		
+		/// <summary>
+		/// コンボボックスの切り替えイベント
+		/// </summary>
+		/// <param name="sender">sender</param>
+		/// <param name="e">event</param>
+		private void UserList_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
+			var newUser = e.AddedItems[0];
+			Instance.ChengeUser(newUser as UserToken);
 			var userIcon = new BitmapImage();
 			userIcon.BeginInit();
 			userIcon.UriSource = new Uri(Path.GetFullPath(Instance.ActiveUser.ProfileImgPath));
