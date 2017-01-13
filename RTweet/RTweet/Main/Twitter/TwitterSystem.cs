@@ -41,7 +41,7 @@ namespace RTweet.Main.Twitter {
 		/// <summary>
 		/// 初期化されたか
 		/// </summary>
-		public bool IsInitialized { get; private set; } = false;
+		public bool IsInitialized { get; private set; }
 
 
 		/// <summary>
@@ -50,7 +50,7 @@ namespace RTweet.Main.Twitter {
 		/// </summary>
 		public void Initialize() {
 			if (IsInitialized) return;
-			if (!System.IO.File.Exists(@"keys.dat")) {
+			if (!File.Exists(@"keys.dat")) {
 				//ファイルが存在しない
 				MessageBox.Show("アカウントが関連付けられてません。初期設定をします。", "メッセージ", MessageBoxButton.OK, MessageBoxImage.Exclamation);
 				Tokens token;
@@ -105,6 +105,11 @@ namespace RTweet.Main.Twitter {
 				}
 			}
 
+		}
+
+		public void Tweet(string text) {
+			if (text == null) return;
+			ActiveUser.Tokens.Statuses.Update(text);
 		}
 
 		public void ChengeUser(UserToken token) {

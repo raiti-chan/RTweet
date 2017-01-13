@@ -3,12 +3,11 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Controls;
 using System.Windows.Forms;
-using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using RTweet.Main;
 using RTweet.Main.Twitter;
+using RTweet.Windows.Dialog;
 using static RTweet.Main.Twitter.TwitterSystem;
-using MessageBox = System.Windows.MessageBox;
 
 namespace RTweet.Windows{
 	/// <summary>
@@ -43,7 +42,7 @@ namespace RTweet.Windows{
 			UserImage.Source = userIcon;
 
 			//ホットキーの設定
-			var keyBinde = new HotKeyRegister(ModKey.CtlShiWin, Keys.T, this);
+			var keyBinde = new HotKeyRegister(ModKey.AltCtlWin, Keys.T, this);
 			keyBinde.HotKeyPressed += HotKeyPush;
 		}
 
@@ -72,7 +71,7 @@ namespace RTweet.Windows{
 		}
 
 		private static void HotKeyPush(object sender) {
-			MessageBox.Show("テスト");
+			new TweetDialog().ShowDialog();
 		}
 	}
 }
