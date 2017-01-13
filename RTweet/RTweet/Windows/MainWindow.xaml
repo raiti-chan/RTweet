@@ -12,5 +12,6 @@
         <ComboBox x:Name="UserList" HorizontalAlignment="Left" Margin="115,23,0,0" VerticalAlignment="Top" Width="417">
         </ComboBox>
         <Image x:Name="UserImage" HorizontalAlignment="Left" Margin="10,23,0,236" Width="100"/>
+        <Button x:Name="AddUser" Content="＋" Margin="510,50,0,0" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="22"/>
     </Grid>
 </Window>

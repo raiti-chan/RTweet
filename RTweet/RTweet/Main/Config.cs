@@ -1,11 +1,12 @@
 ﻿using System.IO;
 using Newtonsoft.Json;
 using System.Text;
+using RTweet.Main.Twitter;
 
 namespace RTweet.Main {
 	internal class Config {
 
-		private const string ConfigFilePath = @"config\config.json";
+		private const string ConfigFilePath = TwitterSystem.ConfigDirectryPath + @"config.json";
 
 		private static Config _instance;
 
@@ -31,8 +32,8 @@ namespace RTweet.Main {
 			}
 		}
 
-		[JsonProperty(PropertyName = "defaultUserID")]
-		public long DefaultUserID { get; set; } = 0;
+		[JsonProperty(PropertyName = "defaultUserId")]
+		public long DefaultUserId { get; set; } = 0;
 
 
 		public void SaveJson() {

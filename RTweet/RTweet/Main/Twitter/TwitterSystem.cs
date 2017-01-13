@@ -15,6 +15,9 @@ namespace RTweet.Main.Twitter {
 
 		public const string ApiKey = "dwZH1nSer18qyIoocJUIZFwmg";
 		public const string ApiSecret = "Yj5v6Y4PzfF8FG3sGAXI7HNjZXTxTjLXvJW60rkEObbRr84Bi7";
+		public const string LogDirectryPath = @"log\";
+		public const string ConfigDirectryPath = @"config\";
+        public const string CashDirectoryPath = @"cash\";
 
 		/// <summary>
 		/// このクラスのインスタンス
@@ -32,7 +35,7 @@ namespace RTweet.Main.Twitter {
 		/// <summary>
 		/// Active状態のユーザー
 		/// </summary>
-		private UserToken ActiveUser;
+		public UserToken ActiveUser { get; private set; }
 
 
 		/// <summary>
@@ -58,7 +61,7 @@ namespace RTweet.Main.Twitter {
 				var u = new UserToken(token.UserId, token.AccessToken, token.AccessTokenSecret, token);
 				ActiveUser = u;
 				UsetList.Add(u);
-				Config.Instance.DefaultUserID = u.Id;
+				Config.Instance.DefaultUserId = u.Id;
 				Config.Instance.SaveJson();
 
 				using (var sw = new StreamWriter(@"Keys.dat", false, Encoding.UTF8)) {
@@ -79,7 +82,7 @@ namespace RTweet.Main.Twitter {
 						var secret = sw.ReadLine();
 						var user = new UserToken(long.Parse(id), token, secret);
 						UsetList.Add(user);
-						if (user.Id == Config.Instance.DefaultUserID) ActiveUser = user;
+						if (user.Id == Config.Instance.DefaultUserId) ActiveUser = user;
 					}
 				}
 			}
