@@ -54,10 +54,15 @@ namespace RTweet.Windows.Dialog {
 			Remove2.Click += Remove_Click;
 			Remove3.Click += Remove_Click;
 			Remove4.Click += Remove_Click;
+
+			Topmost = true;
 		}
 
 		public void ShowInit() {
 			TweetText.Focus();
+			var point = System.Windows.Forms.Cursor.Position;
+			Top = point.Y;
+			Left = point.X;
 		}
 
 		private void Window_Deactivated(object sender, EventArgs e) {
@@ -115,7 +120,7 @@ namespace RTweet.Windows.Dialog {
 			if (int.Parse(TextCount.Content.ToString()) < 0) {
 				CanClose = false;
 				MessageBox.Show("文字数が制限をオーバーしています。", "警告", MessageBoxButton.OK, MessageBoxImage.Error);
-				Focus();
+				Activate();
 				TweetText.Focus();
 				CanClose = true;
 				return;
@@ -162,10 +167,6 @@ namespace RTweet.Windows.Dialog {
 			}
 		}
 
-		private void TweetText_FocusableChanged(object sender, DependencyPropertyChangedEventArgs e) {
-			if (TweetText.IsFocused) return;
-			WindowClose();
-		}
 
 		private readonly OpenFileDialog _fileDialog = new OpenFileDialog();
 

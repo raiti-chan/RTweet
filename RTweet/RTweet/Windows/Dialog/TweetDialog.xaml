@@ -6,7 +6,7 @@
         mc:Ignorable="d"
         Title="TweetDialog" Height="270" Width="310" WindowStyle="None" AllowsTransparency="True" Deactivated="Window_Deactivated">
     <Grid KeyDown="Grid_KeyDown" PreviewTextInput="Grid_PreviewTextInput">
-        <TextBox x:Name="TweetText" Margin="10,10,0,30" TextWrapping="Wrap" Text="" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" PreviewKeyDown="TweetText_PreviewKeyDown" TextChanged="TweetText_TextChanged" FocusableChanged="TweetText_FocusableChanged" HorizontalAlignment="Left" Width="290" />
+        <TextBox x:Name="TweetText" Margin="10,10,0,30" TextWrapping="Wrap" Text="" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" PreviewKeyDown="TweetText_PreviewKeyDown" TextChanged="TweetText_TextChanged" HorizontalAlignment="Left" Width="290" />
         <Label x:Name="TextCount" Content="140" Margin="265,239,0,0" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Width="35"/>
         <Button x:Name="Picture" Content="画像/動画" Margin="10,245,0,5" Click="Picture_Click" HorizontalAlignment="Left" Width="64"/>
         <ScrollViewer HorizontalAlignment="Left" Margin="305,10,0,30" Width="120" VerticalScrollBarVisibility="Auto">

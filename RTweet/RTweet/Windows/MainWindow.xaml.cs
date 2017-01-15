@@ -74,8 +74,9 @@ namespace RTweet.Windows{
 		private readonly TweetDialog _tweetWindw = new TweetDialog();
 
 		private void HotKeyPush(object sender) {
-			_tweetWindw.Show();
 			_tweetWindw.ShowInit();
+			_tweetWindw.Show();
+			_tweetWindw.Activate();
 		}
 
 		private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
