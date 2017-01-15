@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Windows;
@@ -18,7 +19,7 @@ namespace RTweet.Main.Twitter {
 		public const string ApiSecret = "Yj5v6Y4PzfF8FG3sGAXI7HNjZXTxTjLXvJW60rkEObbRr84Bi7";
 		public const string LogDirectryPath = @"log\";
 		public const string ConfigDirectryPath = @"config\";
-        public const string CashDirectoryPath = @"cash\";
+		public const string CashDirectoryPath = @"cash\";
 
 		/// <summary>
 		/// このクラスのインスタンス
@@ -102,12 +103,22 @@ namespace RTweet.Main.Twitter {
 					sw.WriteLine(user.TokenSecret);
 				}
 			}
-
 		}
 
-		public void Tweet(string text) {
+		/// <summary>
+		/// ツイートします。
+		/// </summary>
+		/// <param name="text">ツイートするテキスト</param>
+		/// <param name="mediaIds">メディアID</param>
+		public void Tweet(string text, IEnumerable<long> mediaIds = null) {
 			if (text == null) return;
-			ActiveUser.Tokens.Statuses.Update(text);
+			Debug.WriteLine("Tweet user:" + ActiveUser.ScreenName + "\r\n" + text + "\r\nend");
+			ActiveUser.Tokens.Statuses.Update(text, media_ids: mediaIds);
+		}
+
+		public MediaUploadResult UploadPicture(FileInfo file) {
+			Debug.WriteLine("Upload:" + file.FullName);
+			return ActiveUser.Tokens.Media.Upload(file);
 		}
 
 		public void ChengeUser(UserToken token) {
@@ -130,8 +141,5 @@ namespace RTweet.Main.Twitter {
 				return null;
 			}
 		}
-
-
-
 	}
 }
