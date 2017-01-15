@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="MainWindow" Height="390" Width="555">
+        Title="RTweet" Height="390" Width="555" Closing="Window_Closing" Icon="/RTweet;component/resource/appIcon_32x32.ico" KeyDown="Window_KeyDown">
     <Grid>
         <Menu VerticalAlignment="Top">
             <MenuItem Header="設定"/>

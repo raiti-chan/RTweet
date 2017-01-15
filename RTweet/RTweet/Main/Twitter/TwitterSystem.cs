@@ -3,6 +3,7 @@ using System.IO;
 using System.Text;
 using System.Windows;
 using CoreTweet;
+using RTweet.Windows;
 using RTweet.Windows.Dialog;
 
 namespace RTweet.Main.Twitter {
@@ -23,9 +24,6 @@ namespace RTweet.Main.Twitter {
 		/// このクラスのインスタンス
 		/// </summary>
 		public static TwitterSystem Instance => _instance ?? (_instance = new TwitterSystem());
-
-
-		private TwitterSystem() {}
 
 		/// <summary>
 		/// ユーザーのキーを管理するリスト

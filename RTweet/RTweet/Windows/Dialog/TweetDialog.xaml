@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="TweetDialog" Height="263.783" Width="306.036" WindowStyle="None" AllowsTransparency="True" Deactivated="Window_Deactivated">
-    <Grid>
-        <TextBox x:Name="TweetText" Margin="10" TextWrapping="Wrap" Text="" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" KeyDown="TweetText_KeyDown" KeyUp="TweetText_KeyUp" PreviewKeyDown="TweetText_PreviewKeyDown"/>
+    <Grid KeyDown="Grid_KeyDown">
+        <TextBox x:Name="TweetText" Margin="10,10,10,31" TextWrapping="Wrap" Text="" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" PreviewKeyDown="TweetText_PreviewKeyDown" TextChanged="TweetText_TextChanged" FocusableChanged="TweetText_FocusableChanged"/>
+        <Label x:Name="TextCount" Content="140" Margin="258,233,13,0" FontWeight="Bold" FontSize="16"/>
 
     </Grid>
 </Window>

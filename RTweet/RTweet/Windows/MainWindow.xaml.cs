@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using RTweet.Main;
 using RTweet.Main.Twitter;
@@ -70,8 +71,20 @@ namespace RTweet.Windows{
 			UserImage.Source = userIcon;
 		}
 
-		private static void HotKeyPush(object sender) {
-			new TweetDialog().ShowDialog();
+		private readonly TweetDialog _tweetWindw = new TweetDialog();
+
+		private void HotKeyPush(object sender) {
+			_tweetWindw.Show();
+			_tweetWindw.ShowInit();
+		}
+
+		private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
+			e.Cancel = true;
+			Hide();
+		}
+
+		private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e) {
+			if (e.Key == Key.Escape) Hide();
 		}
 	}
 }
