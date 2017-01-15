@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="TweetDialog" Height="263.783" Width="306.036" WindowStyle="None" AllowsTransparency="True" Deactivated="Window_Deactivated">
-    <Grid KeyDown="Grid_KeyDown">
-        <TextBox x:Name="TweetText" Margin="10,10,10,31" TextWrapping="Wrap" Text="" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" PreviewKeyDown="TweetText_PreviewKeyDown" TextChanged="TweetText_TextChanged" FocusableChanged="TweetText_FocusableChanged"/>
+    <Grid KeyDown="Grid_KeyDown" PreviewTextInput="Grid_PreviewTextInput">
+        <TextBox x:Name="TweetText" Margin="10,10,10,31" TextWrapping="Wrap" Text="" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" PreviewKeyDown="TweetText_PreviewKeyDown" TextChanged="TweetText_TextChanged" FocusableChanged="TweetText_FocusableChanged" />
         <Label x:Name="TextCount" Content="140" Margin="258,233,0,0" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Width="35" Height="31" VerticalAlignment="Top"/>
         <Button x:Name="Picture" Content="画像/動画" Margin="10,0,236,5" VerticalAlignment="Bottom" Click="Picture_Click"/>
 

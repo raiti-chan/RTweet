@@ -38,7 +38,7 @@ namespace RTweet.Windows.Dialog {
 			TweetText.Focus();
 		}
 
-		private void Window_Deactivated(object sender, System.EventArgs e) {
+		private void Window_Deactivated(object sender, EventArgs e) {
 			if (!CanClose) return;
 			Hide();
 			TweetText.Text = "";
@@ -82,10 +82,22 @@ namespace RTweet.Windows.Dialog {
 			TextCount.Foreground = MaxText - textLength < 0 ? Brushes.Red : Brushes.Black;
 		}
 
+		private bool _isFunction;
+
 		private void Grid_KeyDown(object sender, KeyEventArgs e) {
-			if (!CanClose || e.Key != Key.Escape) return;
-			Hide();
-			TweetText.Text = "";
+			// ReSharper disable once SwitchStatementMissingSomeCases
+			switch (e.Key) {
+				case Key.Escape:
+					if (!CanClose) break;
+					Hide();
+					TweetText.Text = "";
+					break;
+				case Key.P:
+					if (Keyboard.Modifiers != ModifierKeys.Control && _upPictures.Count >= 4) break;
+					_isFunction = true;
+					AddPicture();
+					break;
+			}
 		}
 
 		private void TweetText_FocusableChanged(object sender, DependencyPropertyChangedEventArgs e) {
@@ -97,9 +109,13 @@ namespace RTweet.Windows.Dialog {
 		private readonly OpenFileDialog _fileDialog = new OpenFileDialog();
 
 		private void Picture_Click(object sender, RoutedEventArgs e) {
+			AddPicture();
+		}
+
+		private void AddPicture() {
 			CanClose = false;
 			var showDialog = _fileDialog.ShowDialog();
-			if (showDialog != null && (bool) showDialog) {
+			if (showDialog != null && (bool)showDialog) {
 				if (_upPictures.Count < 4) {
 					_upPictures.Add(new FileInfo(_fileDialog.FileName));
 				}
@@ -108,6 +124,13 @@ namespace RTweet.Windows.Dialog {
 			Focus();
 			TweetText.Focus();
 			CanClose = true;
+
+		}
+
+
+		private void Grid_PreviewTextInput(object sender, TextCompositionEventArgs e) {
+			e.Handled = _isFunction;
+			_isFunction = false;
 		}
 	}
 }
