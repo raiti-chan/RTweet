@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using RTweet.Main.Twitter;
+using ToriatamaText;
 
 namespace RTweet.Windows.Dialog {
 	/// <summary>
@@ -48,8 +49,12 @@ namespace RTweet.Windows.Dialog {
 			TweetText.Text = "";
 		}
 
+		private Extractor extractor = new Extractor();
+
 		private void TweetText_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
-			var textLength = TweetText.Text.Count(text => !text.Equals('\n'));
+			var result = extractor.ExtractUrls(TweetText.Text);
+			var textLength = TweetText.Text.Count(text => !char.IsLowSurrogate(text)) - result.Sum(x => x.Length) + 23 * result.Count;
+
 			TextCount.Content = MaxText - textLength;
 			TextCount.Foreground = MaxText - textLength < 0 ? Brushes.Red : Brushes.Black;
 		}
