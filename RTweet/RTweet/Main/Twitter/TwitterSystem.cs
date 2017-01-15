@@ -112,12 +112,12 @@ namespace RTweet.Main.Twitter {
 		/// <param name="mediaIds">メディアID</param>
 		public void Tweet(string text, IEnumerable<long> mediaIds = null) {
 			if (text == null) return;
-			Debug.WriteLine("Tweet user:" + ActiveUser.ScreenName + "\r\n" + text + "\r\nend");
+			Trace.WriteLine("Tweet user:" + ActiveUser.ScreenName + "\r\n" + text + "\r\nend");
 			ActiveUser.Tokens.Statuses.Update(text, media_ids: mediaIds);
 		}
 
 		public MediaUploadResult UploadPicture(FileInfo file) {
-			Debug.WriteLine("Upload:" + file.FullName);
+			Trace.WriteLine("Upload:" + file.FullName);
 			return ActiveUser.Tokens.Media.Upload(file);
 		}
 

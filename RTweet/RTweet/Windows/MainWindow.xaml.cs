@@ -28,9 +28,9 @@ namespace RTweet.Windows{
 			if (!Directory.Exists(ConfigDirectryPath)) Directory.CreateDirectory(ConfigDirectryPath);
 			if (!Directory.Exists(CashDirectoryPath)) Directory.CreateDirectory(CashDirectoryPath); 
 
-			Debug.WriteLine("Start!!");
-			Debug.WriteLine("Date: " + date.ToString("yyyy-M-d dddd"));
-			Debug.WriteLine("Time: " + date.ToString("HH:mm:ss tt zz"));
+			Trace.WriteLine("Start!!");
+			Trace.WriteLine("Date: " + date.ToString("yyyy-M-d dddd"));
+			Trace.WriteLine("Time: " + date.ToString("HH:mm:ss tt zz"));
 			//Twitterシステムの初期化
 			Instance.Initialize();
 
@@ -43,7 +43,7 @@ namespace RTweet.Windows{
 			UserImage.Source = userIcon;
 
 			//ホットキーの設定
-			var keyBinde = new HotKeyRegister(ModKey.AltCtlWin, Keys.P, this);
+			var keyBinde = new HotKeyRegister(ModKey.AltCtlWin, Keys.T, this);
 			keyBinde.HotKeyPressed += HotKeyPush;
 		}
 
