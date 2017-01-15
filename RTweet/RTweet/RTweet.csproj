@@ -51,8 +51,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>appIcon_32x32.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CoreTweet, Version=0.7.2.352, Culture=neutral, processorArchitecture=MSIL">
@@ -175,6 +174,9 @@
     <Resource Include="Resource\appIcon_128x128.ico" />
     <Resource Include="Resource\appIcon_32x32.ico" />
     <Resource Include="Resource\appIcon_64x64.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="appIcon_32x32.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

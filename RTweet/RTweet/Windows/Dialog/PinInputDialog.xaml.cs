@@ -82,5 +82,10 @@ namespace RTweet.Windows.Dialog {
 			DialogResult = true;
 			Close();
 		}
+
+		private void Cancel_Click(object sender, RoutedEventArgs e) {
+			DialogResult = false;
+			Close();
+		}
 	}
 }

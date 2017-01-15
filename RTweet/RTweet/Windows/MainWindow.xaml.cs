@@ -43,7 +43,7 @@ namespace RTweet.Windows{
 			UserImage.Source = userIcon;
 
 			//ホットキーの設定
-			var keyBinde = new HotKeyRegister(ModKey.AltCtlWin, Keys.T, this);
+			var keyBinde = new HotKeyRegister(ModKey.AltCtlWin, Keys.P, this);
 			keyBinde.HotKeyPressed += HotKeyPush;
 		}
 

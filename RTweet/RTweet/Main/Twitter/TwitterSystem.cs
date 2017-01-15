@@ -127,9 +127,10 @@ namespace RTweet.Main.Twitter {
 
 		private static Tokens GetTokens(bool canCancel) {
 			var session = OAuth.Authorize(ApiKey, ApiSecret);
-			System.Diagnostics.Process.Start(session.AuthorizeUri.AbsoluteUri); //認証ページを既定のブラウザで開く
+			Process.Start(session.AuthorizeUri.AbsoluteUri); //認証ページを既定のブラウザで開く
 			var pinDialog = new PinInputDialog(canCancel);
-			pinDialog.ShowDialog();
+			var showDialog = pinDialog.ShowDialog();
+			if (showDialog != null && !showDialog.Value) return null;
 			var pin = pinDialog.PinInput.Text;
 			try {
 				var token = session.GetTokens(pin);

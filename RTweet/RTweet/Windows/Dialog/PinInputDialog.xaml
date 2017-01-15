@@ -10,7 +10,7 @@
         <Label x:Name="Label" Content="ブラウザに表示されたPINコードを入力してください" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="16"/>
         <Button x:Name="Enter" Content="決定" Margin="273,74,10,0" VerticalAlignment="Top" Click="Button_Click"/>
         <TextBox x:Name="PinInput" Height="23" Margin="10,46,10,0" TextWrapping="Wrap" VerticalAlignment="Top" PreviewTextInput="PinInput_PreviewTextInput" KeyDown="PinInput_KeyDown"/>
-        <Button x:Name="Cancel" Content="キャンセル" HorizontalAlignment="Left" Margin="193,74,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="Cancel" Content="キャンセル" HorizontalAlignment="Left" Margin="193,74,0,0" VerticalAlignment="Top" Width="75" Click="Cancel_Click"/>
 
     </Grid>
 </Window>
