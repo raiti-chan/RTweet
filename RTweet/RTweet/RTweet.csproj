@@ -98,6 +98,12 @@
     <Compile Include="Windows\AppNotifyIcon.Designer.cs">
       <DependentUpon>AppNotifyIcon.cs</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Control\PicturePreviewPanel.xaml.cs">
+      <DependentUpon>PicturePreviewPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Control\PicturePreviewStackPanel.xaml.cs">
+      <DependentUpon>PicturePreviewStackPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Dialog\PinInputDialog.xaml.cs">
       <DependentUpon>PinInputDialog.xaml</DependentUpon>
     </Compile>
@@ -111,6 +117,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\Control\PicturePreviewPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Control\PicturePreviewStackPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Dialog\PinInputDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -178,6 +192,7 @@
   <ItemGroup>
     <Resource Include="appIcon_32x32.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

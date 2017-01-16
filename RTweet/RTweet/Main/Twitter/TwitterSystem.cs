@@ -4,7 +4,6 @@ using System.IO;
 using System.Text;
 using System.Windows;
 using CoreTweet;
-using RTweet.Windows;
 using RTweet.Windows.Dialog;
 
 namespace RTweet.Main.Twitter {
