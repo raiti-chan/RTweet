@@ -25,7 +25,7 @@ namespace RTweet.Windows.Dialog {
 			e.Handled = !Regex.IsMatch(e.Text, "[0-9]");
 		}
 
-		private bool IsOk { get; set; } = false;
+		private bool IsOk { get; set; }
 
 		/// <summary>
 		/// Windowの閉じるボタン
@@ -33,11 +33,11 @@ namespace RTweet.Windows.Dialog {
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
+			if (IsOk) return;
 			if (_canCancel) {
 				DialogResult = false;
 				return;
 			}
-			if (IsOk) return;
 			var result = MessageBox.Show("アプリケーションを終了しますか?", "アプリケーションの終了",
 				MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
 			if (result == MessageBoxResult.Yes) Environment.Exit(0);
@@ -83,6 +83,12 @@ namespace RTweet.Windows.Dialog {
 			Close();
 		}
 
+
+		/// <summary>
+		/// キャンセル
+		/// </summary>
+		/// <param name="sender">sender</param>
+		/// <param name="e">event</param>
 		private void Cancel_Click(object sender, RoutedEventArgs e) {
 			DialogResult = false;
 			Close();

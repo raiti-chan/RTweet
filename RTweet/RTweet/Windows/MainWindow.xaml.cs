@@ -17,6 +17,7 @@ namespace RTweet.Windows{
 	public partial class MainWindow {
 		public MainWindow() {
 			InitializeComponent();
+
 			//初期化
 			if (!Directory.Exists(LogDirectryPath)) Directory.CreateDirectory(LogDirectryPath);
 			var date = DateTime.Now;

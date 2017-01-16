@@ -91,6 +91,7 @@
     <Compile Include="Main\Config.cs" />
     <Compile Include="Main\HotKey.cs" />
     <Compile Include="Main\Twitter\TwitterSystem.cs" />
+    <Compile Include="Main\Twitter\TwitterSystemPrivate.cs" />
     <Compile Include="Main\Twitter\UserToken.cs" />
     <Compile Include="Windows\AppNotifyIcon.cs">
       <SubType>Component</SubType>
@@ -155,6 +156,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\AppNotifyIcon.resx">
       <DependentUpon>AppNotifyIcon.cs</DependentUpon>

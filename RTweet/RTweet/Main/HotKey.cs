@@ -81,7 +81,7 @@ namespace RTweet.Main {
 			UnregisterHotKey();
 		}
 
-		private void UnregisterHotKey() {
+		public void UnregisterHotKey() {
 			_isKeyRegistered = !HotKeyWinApi.UnregisterHotKey(_handle, _id);
 		}
 

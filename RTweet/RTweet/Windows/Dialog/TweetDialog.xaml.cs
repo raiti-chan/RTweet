@@ -127,7 +127,7 @@ namespace RTweet.Windows.Dialog {
 
 		/// <summary>
 		/// ツイート入力欄に入力された時のイベント
-		/// コマンド入力の場合、文字入力させないようにする。
+		/// コマンド入力の場合、文字入力させないようにする。　　
 		/// </summary>
 		/// <param name="sender">イベント発生元</param>
 		/// <param name="e">イベント</param>
