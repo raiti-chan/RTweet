@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Input;
@@ -15,6 +17,9 @@ namespace RTweet.Windows{
 	/// MainWindow.xaml の相互作用ロジック
 	/// </summary>
 	public partial class MainWindow {
+
+        public static Dictionary<string,HotKeyRegister> hotKeyses = new Dictionary<string, HotKeyRegister>();
+
 		public MainWindow() {
 			InitializeComponent();
 			//初期化
@@ -43,8 +48,10 @@ namespace RTweet.Windows{
 			UserImage.Source = userIcon;
 
 			//ホットキーの設定
-			var keyBinde = new HotKeyRegister(ModKey.AltCtlWin, Keys.P, this);
+			var keyBinde = new HotKeyRegister(ModKey.AltCtlWin, Keys.T, this);
+            keyBinde.RegisterHotKey();
 			keyBinde.HotKeyPressed += HotKeyPush;
+            hotKeyses.Add("TweetKey",keyBinde);
 		}
 
 		/// <summary>
@@ -87,5 +94,11 @@ namespace RTweet.Windows{
 		private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e) {
 			if (e.Key == Key.Escape) Hide();
 		}
+
+	    private void HotKeySetting_OnClick(object sender, RoutedEventArgs e)
+	    {
+	        var settingWindow = new KeySettingWindow();
+	        settingWindow.ShowDialog();
+	    }
 	}
 }

@@ -104,6 +104,9 @@
     <Compile Include="Windows\Dialog\TweetDialog.xaml.cs">
       <DependentUpon>TweetDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\KeySettingWindow.xaml.cs">
+      <DependentUpon>KeySettingWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -116,6 +119,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Windows\Dialog\TweetDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\KeySettingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
