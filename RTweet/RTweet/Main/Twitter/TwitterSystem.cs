@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -95,14 +96,16 @@ namespace RTweet.Main.Twitter {
 		public void AddUser() {
 			var token = GetTokens(true);
 			if (token == null) return;
+			Trace.WriteLine("UserAdding!!:");
 			if (UsetList.Any(userToken => userToken.Id == token.UserId)) {
 				MessageBox.Show("そのアカウントは既に登録されています。");
+				Trace.WriteLine("AddUser:" + token.UserId + " This user is already registered!!");
 				return;
 			}
 			var u = new UserToken(token.UserId, token.AccessToken, token.AccessTokenSecret, token);
 
 			UsetList.Add(u);
-
+			Trace.WriteLine("AddUser:" + token.UserId);
 			using (var sw = new StreamWriter(@"Keys.dat", false, Encoding.UTF8)) {
 				foreach (var user in UsetList) {
 					sw.WriteLine(user.Id);
@@ -120,18 +123,29 @@ namespace RTweet.Main.Twitter {
 		public void Tweet(string text, IEnumerable<long> mediaIds = null) {
 			if (text == null) return;
 			Trace.WriteLine("Tweet user:" + ActiveUser.ScreenName + "\r\n" + text + "\r\nend");
-			ActiveUser.Tokens.Statuses.Update(text, media_ids: mediaIds);
+			try {
+				ActiveUser.Tokens.Statuses.Update(text, media_ids: mediaIds);
+			}
+			catch (TwitterException e) {
+				ErrorProcessing(e);
+			}
 		}
 
+
+		/// <summary>
+		/// 画像をアップロードします。
+		/// </summary>
+		/// <param name="file">アップローする画像ファイル</param>
+		/// <returns></returns>
 		public MediaUploadResult UploadPicture(FileInfo file) {
 			Trace.WriteLine("Upload:" + file.FullName);
 			return ActiveUser.Tokens.Media.Upload(file);
 		}
 
+
 		public void ChengeUser(UserToken token) {
+			Trace.WriteLine("ChengeUser:" + Instance.ActiveUser.ScreenName);
 			ActiveUser = token;
 		}
-
-		
 	}
 }

@@ -18,7 +18,7 @@ namespace RTweet.Windows{
 	/// </summary>
 	public partial class MainWindow {
 
-        public static Dictionary<string,HotKeyRegister> hotKeyses = new Dictionary<string, HotKeyRegister>();
+        public static Dictionary<string,HotKeyRegister> HotKeyses = new Dictionary<string, HotKeyRegister>();
 
 		public MainWindow() {
 			InitializeComponent();
@@ -42,17 +42,16 @@ namespace RTweet.Windows{
 
 			UserList.ItemsSource = Instance.UsetList;
 			UserList.Text = Instance.ActiveUser.ScreenName;
-			var userIcon = new BitmapImage();
-			userIcon.BeginInit();
-			userIcon.UriSource = new Uri(Path.GetFullPath(Instance.ActiveUser.ProfileImgPath));
-			userIcon.EndInit();
+			Trace.WriteLine("ActiveUser:" + Instance.ActiveUser.ScreenName);
+			Trace.WriteLine("LoadImage:" + Path.GetFullPath(Instance.ActiveUser.ProfileImgPath));
+			var userIcon = new BitmapImage(new Uri(Path.GetFullPath(Instance.ActiveUser.ProfileImgPath)));
 			UserImage.Source = userIcon;
 
 			//ホットキーの設定
 			var keyBinde = new HotKeyRegister(ModKey.AltCtlWin, Keys.T, this);
             keyBinde.RegisterHotKey();
 			keyBinde.HotKeyPressed += HotKeyPush;
-            hotKeyses.Add("TweetKey",keyBinde);
+            HotKeyses.Add("TweetKey",keyBinde);
 		}
 
 		/// <summary>
@@ -72,10 +71,8 @@ namespace RTweet.Windows{
 		private void UserList_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
 			var newUser = e.AddedItems[0];
 			Instance.ChengeUser(newUser as UserToken);
-			var userIcon = new BitmapImage();
-			userIcon.BeginInit();
-			userIcon.UriSource = new Uri(Path.GetFullPath(Instance.ActiveUser.ProfileImgPath));
-			userIcon.EndInit();
+			Trace.WriteLine("LoadImage:" + Path.GetFullPath(Instance.ActiveUser.ProfileImgPath));
+			var userIcon = new BitmapImage(new Uri(Path.GetFullPath(Instance.ActiveUser.ProfileImgPath)));
 			UserImage.Source = userIcon;
 		}
 

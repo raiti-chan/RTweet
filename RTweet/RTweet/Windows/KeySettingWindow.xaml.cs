@@ -54,7 +54,7 @@ namespace RTweet.Windows
             {
                 if (Enum.TryParse(keys[modKeyCount], out key))
                 {
-                    MainWindow.hotKeyses[sender.Name].ChangeHotkey(modKey, key);
+                    MainWindow.HotKeyses[sender.Name].ChangeHotkey(modKey, key);
                 }
             }
         }
