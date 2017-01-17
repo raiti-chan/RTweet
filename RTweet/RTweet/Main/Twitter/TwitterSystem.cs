@@ -1,18 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using CoreTweet;
-using RTweet.Windows;
-using RTweet.Windows.Dialog;
 
 namespace RTweet.Main.Twitter {
 	/// <summary>
 	/// TwitterAPI(CoreTweet)へのアクセスをするためのクラス。
 	/// このクラスはシングルトンクラスです
 	/// </summary>
-	internal class TwitterSystem {
+	internal partial class TwitterSystem {
 		private static TwitterSystem _instance;
 
 		public const string ApiKey = "dwZH1nSer18qyIoocJUIZFwmg";
@@ -90,10 +89,18 @@ namespace RTweet.Main.Twitter {
 			IsInitialized = true;
 		}
 
+		/// <summary>
+		/// ユーザーを追加します。
+		/// </summary>
 		public void AddUser() {
 			var token = GetTokens(true);
 			if (token == null) return;
+			if (UsetList.Any(userToken => userToken.Id == token.UserId)) {
+				MessageBox.Show("そのアカウントは既に登録されています。");
+				return;
+			}
 			var u = new UserToken(token.UserId, token.AccessToken, token.AccessTokenSecret, token);
+
 			UsetList.Add(u);
 
 			using (var sw = new StreamWriter(@"Keys.dat", false, Encoding.UTF8)) {
@@ -112,12 +119,12 @@ namespace RTweet.Main.Twitter {
 		/// <param name="mediaIds">メディアID</param>
 		public void Tweet(string text, IEnumerable<long> mediaIds = null) {
 			if (text == null) return;
-			Debug.WriteLine("Tweet user:" + ActiveUser.ScreenName + "\r\n" + text + "\r\nend");
+			Trace.WriteLine("Tweet user:" + ActiveUser.ScreenName + "\r\n" + text + "\r\nend");
 			ActiveUser.Tokens.Statuses.Update(text, media_ids: mediaIds);
 		}
 
 		public MediaUploadResult UploadPicture(FileInfo file) {
-			Debug.WriteLine("Upload:" + file.FullName);
+			Trace.WriteLine("Upload:" + file.FullName);
 			return ActiveUser.Tokens.Media.Upload(file);
 		}
 
@@ -125,22 +132,6 @@ namespace RTweet.Main.Twitter {
 			ActiveUser = token;
 		}
 
-		private static Tokens GetTokens(bool canCancel) {
-			var session = OAuth.Authorize(ApiKey, ApiSecret);
-			Process.Start(session.AuthorizeUri.AbsoluteUri); //認証ページを既定のブラウザで開く
-			var pinDialog = new PinInputDialog(canCancel);
-			var showDialog = pinDialog.ShowDialog();
-			if (showDialog != null && !showDialog.Value) return null;
-			var pin = pinDialog.PinInput.Text;
-			try {
-				var token = session.GetTokens(pin);
-				return token;
-			}
-			catch (TwitterException) {
-				MessageBox.Show("PINコードの認証エラーが発生しました。\n" +
-								"PINコードが正しくないかネットワークに通ながってない可能性があります。", "認証エラー");
-				return null;
-			}
-		}
+		
 	}
 }
