@@ -8,7 +8,9 @@
         Title="RTweet" Height="390" Width="555" Closing="Window_Closing" Icon="/RTweet;component/resource/appIcon_32x32.ico" KeyDown="Window_KeyDown">
     <Grid>
         <Menu VerticalAlignment="Top">
-            <MenuItem Header="設定"/>
+            <MenuItem Header="設定">
+                <MenuItem Header="HotKey" IsCheckable="False" Click="HotKeySetting_OnClick"/>
+            </MenuItem>
         </Menu>
         <ComboBox x:Name="UserList" HorizontalAlignment="Left" Margin="115,23,0,0" VerticalAlignment="Top" Width="417" SelectionChanged="UserList_OnSelectionChanged">
         </ComboBox>

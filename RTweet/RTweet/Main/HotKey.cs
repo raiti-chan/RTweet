@@ -62,12 +62,12 @@ namespace RTweet.Main {
 			var r = new Random();
 			_id = r.Next();
 			_handle = windowHandle;
-			RegisterHotKey();
+			//RegisterHotKey();
 
 			ComponentDispatcher.ThreadPreprocessMessage += ThreadPreprocessMessageMethod;
 		}
 
-		private void RegisterHotKey() {
+		public void RegisterHotKey() {
 			if (Key == Keys.None)
 				return;
 			if (_isKeyRegistered)
@@ -96,6 +96,17 @@ namespace RTweet.Main {
 		private void OnHotKeyPressed() {
 			HotKeyPressed?.Invoke(this);
 		}
+
+	    public HotKeyRegister ChangeHotkey(ModKey modKey, Keys key)
+	    {
+            UnregisterHotKey();
+            // ReSharper disable once InvocationIsSkipped
+            Contract.Requires(modKey != ModKey.None || key != Keys.None);
+            Key = key;
+            KeyModifier = modKey;
+            RegisterHotKey();
+	        return this;
+	    }
 
 
 	}

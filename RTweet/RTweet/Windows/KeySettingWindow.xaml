@@ -1,0 +1,14 @@
+﻿<Window x:Class="RTweet.Windows.KeySettingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RTweet.Windows"
+        mc:Ignorable="d"
+        Title="Key Settings" Height="300" Width="400">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="25,10,0,0" TextWrapping="Wrap" Text="Open Tweet Dialog" VerticalAlignment="Top"/>
+        <TextBox Name="TweetKey" HorizontalAlignment="Left" Height="13" Margin="138,10,0,0" TextWrapping="Wrap"
+                 Text="Ctrl + Alt + Window + T" VerticalAlignment="Top" Width="244" KeyDown="KeySettingBox_KeyDown" KeyUp="KeySettingBox_KeyUp" PreviewTextInput="CancelInput"/>
+    </Grid>
+</Window>
