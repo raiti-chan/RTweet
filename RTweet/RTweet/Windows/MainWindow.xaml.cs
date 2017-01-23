@@ -98,5 +98,9 @@ namespace RTweet.Windows{
 	        var settingWindow = new KeySettingWindow();
 	        settingWindow.ShowDialog();
 	    }
+
+		private void MenuItem_OnClick(object sender, RoutedEventArgs e) {
+			Config.Instance.OpenSettingWindow();
+		}
 	}
 }

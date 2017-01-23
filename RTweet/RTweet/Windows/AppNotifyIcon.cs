@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Forms;
+using RTweet.Main;
 using MessageBox = System.Windows.MessageBox;
 
 
@@ -57,7 +58,7 @@ namespace RTweet.Windows {
 		/// <param name="sender">sender</param>
 		/// <param name="eventArgs">event</param>
 		public void SettingOnClick(object sender, EventArgs eventArgs) {
-			MessageBox.Show("未実装", "情報", MessageBoxButton.OK, MessageBoxImage.Information);
+			Config.Instance.OpenSettingWindow();
 		}
 
 		/// <summary>

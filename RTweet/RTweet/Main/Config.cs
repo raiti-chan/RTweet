@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System.Text;
 using RTweet.Main.Twitter;
+using RTweet.Windows.Dialog;
 
 namespace RTweet.Main {
 	internal class Config {
@@ -41,6 +42,11 @@ namespace RTweet.Main {
 			using (var sr = new StreamWriter(ConfigFilePath, false, Encoding.UTF8)) {
 				sr.Write(jsonOut);
 			}
+		}
+
+		public void OpenSettingWindow() {
+			var window = new SettingWindow();
+			window.ShowDialog();
 		}
 
 	}

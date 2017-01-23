@@ -9,6 +9,7 @@
     <Grid>
         <Menu VerticalAlignment="Top">
             <MenuItem Header="設定">
+                <MenuItem Header="設定" Click="MenuItem_OnClick"/>
                 <MenuItem Header="HotKey" IsCheckable="False" Click="HotKeySetting_OnClick"/>
             </MenuItem>
         </Menu>

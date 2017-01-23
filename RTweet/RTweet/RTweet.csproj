@@ -89,6 +89,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Main\Config.cs" />
+    <Compile Include="Main\GetShell32Icon.cs" />
     <Compile Include="Main\HotKey.cs" />
     <Compile Include="Main\Twitter\TwitterSystem.cs" />
     <Compile Include="Main\Twitter\TwitterSystemPrivate.cs" />
@@ -105,8 +106,14 @@
     <Compile Include="Windows\Control\PicturePreviewStackPanel.xaml.cs">
       <DependentUpon>PicturePreviewStackPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Control\Setting\SettingCategoryList.xaml.cs">
+      <DependentUpon>SettingCategoryList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Dialog\PinInputDialog.xaml.cs">
       <DependentUpon>PinInputDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Dialog\SettingWindow.xaml.cs">
+      <DependentUpon>SettingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Dialog\TweetDialog.xaml.cs">
       <DependentUpon>TweetDialog.xaml</DependentUpon>
@@ -129,9 +136,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\Control\Setting\SettingCategoryList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Dialog\PinInputDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Dialog\SettingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Dialog\TweetDialog.xaml">
       <SubType>Designer</SubType>
