@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
 using CoreTweet;
+using RTweet.Main.Config;
 
 namespace RTweet.Main.Twitter {
 	/// <summary>
@@ -60,8 +60,8 @@ namespace RTweet.Main.Twitter {
 				var u = new UserToken(token.UserId, token.AccessToken, token.AccessTokenSecret, token);
 				ActiveUser = u;
 				UsetList.Add(u);
-				Config.Instance.DefaultUserId = u.Id;
-				Config.Instance.SaveJson();
+				MainConfig.Instance.DefaultUserId = u.Id;
+				MainConfig.Instance.SaveJson();
 
 				using (var sw = new StreamWriter(@"Keys.dat", false, Encoding.UTF8)) {
 					foreach (var user in UsetList) {
@@ -81,7 +81,14 @@ namespace RTweet.Main.Twitter {
 						var secret = sw.ReadLine();
 						var user = new UserToken(long.Parse(id), token, secret);
 						UsetList.Add(user);
-						if (user.Id == Config.Instance.DefaultUserId) ActiveUser = user;
+						if (user.Id == MainConfig.Instance.DefaultUserId) ActiveUser = user;
+					}
+
+					//デフォルトユーザーの定義が無かったら
+					if (ActiveUser == null) {
+						ActiveUser = UsetList[0];
+						MainConfig.Instance.DefaultUserId = ActiveUser.Id;
+						MainConfig.Instance.SaveJson();
 					}
 				}
 			}

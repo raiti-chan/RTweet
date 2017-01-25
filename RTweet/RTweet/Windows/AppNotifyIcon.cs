@@ -1,9 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Windows;
 using System.Windows.Forms;
-using RTweet.Main;
-using MessageBox = System.Windows.MessageBox;
+using RTweet.Main.Config;
 
 
 namespace RTweet.Windows {
@@ -58,7 +56,7 @@ namespace RTweet.Windows {
 		/// <param name="sender">sender</param>
 		/// <param name="eventArgs">event</param>
 		public void SettingOnClick(object sender, EventArgs eventArgs) {
-			Config.Instance.OpenSettingWindow();
+			MainConfig.Instance.OpenSettingWindow();
 		}
 
 		/// <summary>

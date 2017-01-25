@@ -9,8 +9,10 @@
     <Grid>
         <Menu VerticalAlignment="Top">
             <MenuItem Header="設定">
-                <MenuItem Header="設定" Click="MenuItem_OnClick"/>
+                <MenuItem Header="設定" Click="Setting_OnClick"/>
                 <MenuItem Header="HotKey" IsCheckable="False" Click="HotKeySetting_OnClick"/>
+                <Separator/>
+                <MenuItem Header="終了" Click="Exit_OnClick"></MenuItem>
             </MenuItem>
         </Menu>
         <ComboBox x:Name="UserList" HorizontalAlignment="Left" Margin="115,23,0,0" VerticalAlignment="Top" Width="417" SelectionChanged="UserList_OnSelectionChanged">

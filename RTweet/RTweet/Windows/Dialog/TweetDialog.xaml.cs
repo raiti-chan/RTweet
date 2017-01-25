@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Brushes = System.Windows.Media.Brushes;
 using CoreTweet;
 using Microsoft.Win32;
+using RTweet.Main.Config;
 using RTweet.Main.Twitter;
 using ToriatamaText;
+
 
 namespace RTweet.Windows.Dialog {
 	/// <summary>
@@ -54,7 +58,6 @@ namespace RTweet.Windows.Dialog {
 			InitializeComponent();
 			_fileDialog.Filter = "画像ファイル(*.png;*.jpg;*.jpeg)|*.png;*.jpg;*.jpeg";
 			_fileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-
 			Topmost = true;
 		}
 
@@ -63,9 +66,15 @@ namespace RTweet.Windows.Dialog {
 		/// </summary>
 		public void ShowInit() {
 			TweetText.Focus();
-			var point = System.Windows.Forms.Cursor.Position;
-			Top = point.Y;
-			Left = point.X;
+			if (MainConfig.Instance.IsRelativeCoordinatesFromTheMouse) {
+				var point = System.Windows.Forms.Cursor.Position;
+				Top = point.Y + MainConfig.Instance.TweetDialogPopuPoint.X;
+				Left = point.X + MainConfig.Instance.TweetDialogPopuPoint.Y;
+			} else {
+				Top = MainConfig.Instance.TweetDialogPopuPoint.X;
+				Left = MainConfig.Instance.TweetDialogPopuPoint.Y;
+			}
+
 		}
 
 		/// <summary>
@@ -162,7 +171,7 @@ namespace RTweet.Windows.Dialog {
 		/// </summary>
 		/// <param name="sender">イベント発生元</param>
 		/// <param name="e">イベント</param>
-		private void TweetText_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
+		private void TweetText_TextChanged(object sender, TextChangedEventArgs e) {
 			var result = _extractor.ExtractUrls(TweetText.Text);
 			var textLength = TweetText.Text.Count(text => !char.IsLowSurrogate(text)) - result.Sum(x => x.Length) +
 							23 * result.Count;
@@ -191,13 +200,11 @@ namespace RTweet.Windows.Dialog {
 			if (_upPictures.Count > 0) {
 				//画像がレジスターに追加されていた場合
 				var upResults = new MediaUploadResult[_upPictures.Count];
-				for (var i = 0; i < upResults.Length; i++)
-					upResults[i] = TwitterSystem.Instance.UploadPicture(_upPictures[i]); //画像をアップロード
+				for (var i = 0; i < upResults.Length; i++) upResults[i] = TwitterSystem.Instance.UploadPicture(_upPictures[i]); //画像をアップロード
 				var ids = new long[upResults.Length]; //ID格納配列
 				for (var i = 0; i < ids.Length; i++) ids[i] = upResults[i].MediaId; //IDを代入
 				TwitterSystem.Instance.Tweet(TweetText.Text, ids); //メディアを添付してツイートを送信
-			}
-			else {
+			} else {
 				TwitterSystem.Instance.Tweet(TweetText.Text); //テキストをツイート
 			}
 			WindowClose(); //ウィンドウを閉じる

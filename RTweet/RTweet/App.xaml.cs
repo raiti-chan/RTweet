@@ -1,31 +1,53 @@
-﻿using System.Windows;
+﻿using System;
+using System.IO;
+using System.Windows;
 using System.Windows.Forms;
+using RTweet.Main.Config;
 using RTweet.Windows;
-using Application = System.Windows.Application;
 
 namespace RTweet {
 	/// <summary>
 	/// App.xaml の相互作用ロジック
 	/// </summary>
-	public partial class App : Application {
+	public partial class App {
+
+		/// <summary>
+		/// アプリケーションのインスタンス
+		/// </summary>
 		public static App AppInstance { get; private set; }
 
+		/// <summary>
+		/// タスクトレイアイコン
+		/// </summary>
 		public AppNotifyIcon NotifyIcon { get; private set; }
 
+		/// <summary>
+		/// メインウィンドウ
+		/// </summary>
 		public MainWindow AppWindow { get; private set; }
 
+		/// <summary>
+		/// スタートアップ
+		/// </summary>
+		/// <param name="e">event</param>
 		protected override void OnStartup(StartupEventArgs e) {
 			base.OnStartup(e);
 			AppInstance = this;
 			ShutdownMode = ShutdownMode.OnExplicitShutdown;
 			NotifyIcon = new AppNotifyIcon();
 			AppWindow = new MainWindow();
+			StyleUpdate();
 			AppWindow.Show();
 		}
 
+		/// <summary>
+		/// 終了処理
+		/// </summary>
+		/// <param name="e">event</param>
 		protected override void OnExit(ExitEventArgs e) {
 			base.OnExit(e);
 			NotifyIcon.Dispose();
+			MainConfig.Instance.SaveJson();
 		}
 
 		/// <summary>

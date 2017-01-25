@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using RTweet.Main;
+using RTweet.Main.Config;
 using RTweet.Main.Twitter;
 using RTweet.Windows.Dialog;
 using static RTweet.Main.Twitter.TwitterSystem;
@@ -59,7 +60,7 @@ namespace RTweet.Windows{
 		/// </summary>
 		/// <param name="sender">sender</param>
 		/// <param name="e">event</param>
-		private void AddUser_Click(object sender, System.Windows.RoutedEventArgs e) {
+		private void AddUser_Click(object sender, RoutedEventArgs e) {
 			Instance.AddUser();
 		}
 		
@@ -99,8 +100,12 @@ namespace RTweet.Windows{
 	        settingWindow.ShowDialog();
 	    }
 
-		private void MenuItem_OnClick(object sender, RoutedEventArgs e) {
-			Config.Instance.OpenSettingWindow();
+		private void Setting_OnClick(object sender, RoutedEventArgs e) {
+			MainConfig.Instance.OpenSettingWindow();
+		}
+
+		private void Exit_OnClick(object sender, RoutedEventArgs e) {
+			App.AppInstance.Shutdown();
 		}
 	}
 }
