@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace RTweet.Windows.Control {
 	/// <summary>
@@ -13,6 +14,32 @@ namespace RTweet.Windows.Control {
 		/// この要素のインデックス
 		/// </summary>
 		public int Index { get; private set; }
+
+		/// <summary>
+		/// 表示する画像ソース
+		/// </summary>
+		public ImageSource ImageSource {
+			set {
+
+				if (value == null) {
+					Height = 0;
+					Image.Height = 0;
+					Image.Source = null;
+					return;
+				}
+				var x = value.Width;
+				var y = value.Height;
+				var y2 = 100 / x * y;
+				if (y2 < 30) y2 = 30;
+				Height = y2;
+				Image.Height = y2;
+				Image.Source = value;
+
+			}
+
+			get { return Image.Source; }
+
+		}
 
 		/// <summary>
 		/// 初期化

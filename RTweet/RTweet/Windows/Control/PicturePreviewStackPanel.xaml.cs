@@ -72,9 +72,10 @@ namespace RTweet.Windows.Control {
 			for (; index < _images.Length; index++) if (_images[index] == null) break; //一番小さい空き領域インデックスを求める
 			_images[index] = image; //空き領域に格納
 			_links[Count] = index; //格納されたインデックスをリンクとして保持
-			_panels[Count].Image.Source = image; //特に更新する必要が無いのでそのまま画像を入れる。
+			_panels[Count].ImageSource = image; //特に更新する必要が無いのでそのまま画像を入れる。
+			Height += _panels[Count].Height + 5;
 			++Count;
-			Height = Count * 105;
+			
 		}
 
 		/// <summary>
@@ -96,9 +97,13 @@ namespace RTweet.Windows.Control {
 		/// 表示する画像を更新します。
 		/// </summary>
 		public void SourceUpdate() {
+			double height = 0;
 			for (var i = 0; i < _links.Length; i++) {
-				_panels[i].Image.Source = _links[i] < 0 ? null : _images[_links[i]];
+				_panels[i].ImageSource = _links[i] < 0 ? null : _images[_links[i]];
+				if (_links[i] < 0) continue;
+				height += _panels[i].Height + 5;
 			}
+			Height = height;
 		}
 
 		/// <summary>
@@ -108,10 +113,10 @@ namespace RTweet.Windows.Control {
 			for (var i = 0; i < _images.Length; i++) {
 				_images[i] = null;
 				_links[i] = -1;
-				_panels[i].Image.Source = null;
+				_panels[i].ImageSource = null;
 			}
 			Count = 0;
-			Height = 100;
+			Height = 0;
 		}
 	}
 }

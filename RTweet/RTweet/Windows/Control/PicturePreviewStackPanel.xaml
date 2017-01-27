@@ -5,6 +5,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     x:Class="RTweet.Windows.Control.PicturePreviewStackPanel"
     mc:Ignorable="d"
-    d:DesignHeight="100" d:DesignWidth="100">
-    <StackPanel x:Name="StackPanel" />
+    d:DesignHeight="0" d:DesignWidth="100" Height="0" Width="100">
+    <StackPanel x:Name="StackPanel"/>
 </UserControl>

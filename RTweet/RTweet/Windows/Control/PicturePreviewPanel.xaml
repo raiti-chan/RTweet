@@ -4,9 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="100" Margin="0,0,0,5">
+             d:DesignHeight="100" d:DesignWidth="100" Margin="0,0,0,5" Width="100">
     <Grid>
-        <Image x:Name="Image" HorizontalAlignment="Left" Height="100" Margin="0" VerticalAlignment="Top" Width="100" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave"/>
-        <Button x:Name="RemoveButton" Content="×" HorizontalAlignment="Right" Width="20" Background="{x:Null}" Visibility="Hidden" MouseEnter="RemoveButton_MouseEnter" Margin="0,5,5,0" Height="20" VerticalAlignment="Top"/>
+        <Image x:Name="Image" Margin="0" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" Width="100" Height="0"/>
+        <Button x:Name="RemoveButton" HorizontalAlignment="Right" Width="20" Visibility="Hidden" MouseEnter="RemoveButton_MouseEnter" Margin="0,5,5,0" Height="20" VerticalAlignment="Top" Style="{DynamicResource PicturePreviewPanel.RemoveButton}"/>
     </Grid>
 </UserControl>

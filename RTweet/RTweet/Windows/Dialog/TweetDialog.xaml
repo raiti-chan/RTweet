@@ -13,15 +13,14 @@
                      VerticalScrollBarVisibility="Auto" PreviewKeyDown="TweetText_PreviewKeyDown"
                      TextChanged="TweetText_TextChanged" HorizontalAlignment="Left" Width="290" />
 
-            <Label x:Name="TextCount" Content="140" Margin="265,0,0,5" FontWeight="Bold" FontSize="16"
+			<Label x:Name="TextCount" Content="140" Margin="265,0,0,5" FontWeight="Bold" FontSize="16"
                    HorizontalAlignment="Left" Width="35" Height="31" VerticalAlignment="Bottom" />
 
+			<Button x:Name="Picture" Content="メディア" Margin="10,0,0,10" Click="Picture_Click"
+                    HorizontalAlignment="Left" Width="70" Style="{DynamicResource TweetDialog.MediaButtonStyle}" Height="20" VerticalAlignment="Bottom" />
 
-            <Button x:Name="Picture" Content="メディア" Margin="10,0,0,10" Click="Picture_Click"
-                    HorizontalAlignment="Left" Width="70" Style="{DynamicResource MediaButtonStyle}" Height="20" VerticalAlignment="Bottom" />
-
-            <ScrollViewer HorizontalAlignment="Left" Margin="305,10,0,30" Width="120"
-                          VerticalScrollBarVisibility="Auto">
+            <ScrollViewer HorizontalAlignment="Left" Margin="305,10,-115,10" Width="120"
+                          VerticalScrollBarVisibility="Visible" Template="{DynamicResource TweetDialog.PicturePreviewPanelScrollViewer}">
                 <control:PicturePreviewStackPanel x:Name="PreviewStackPanel"
                                                   RemoveClick="PreviewStackPanel_RemoveClick" />
             </ScrollViewer>

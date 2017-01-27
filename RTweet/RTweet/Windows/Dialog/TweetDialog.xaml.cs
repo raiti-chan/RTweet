@@ -90,7 +90,7 @@ namespace RTweet.Windows.Dialog {
 					Width = _upPictures.Count > 0 ? 430 : 310;
 				}
 			}
-			if (_upPictures.Count >= 4) Picture.IsEnabled = false;
+			Picture.IsEnabled = _upPictures.Count < 4;
 			Focus();
 			TweetText.Focus();
 			CanClose = true;
@@ -104,6 +104,8 @@ namespace RTweet.Windows.Dialog {
 			_upPictures.RemoveAt(index);
 			PreviewStackPanel.RemoveImage(index);
 			Width = _upPictures.Count > 0 ? 430 : 310;
+			Picture.IsEnabled = _upPictures.Count < 4;
+
 		}
 
 
@@ -120,7 +122,6 @@ namespace RTweet.Windows.Dialog {
 
 			//ウィンドウサイズを初期値にする。
 			Width = 310;
-			PreviewStackPanel.Height = 100;
 		}
 
 		//--------------------------------------------------------------------------------------ここから先はイベントメソッド
