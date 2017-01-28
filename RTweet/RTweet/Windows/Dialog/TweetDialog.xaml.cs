@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -228,6 +227,15 @@ namespace RTweet.Windows.Dialog {
 		private void PreviewStackPanel_RemoveClick(object sender, int e) {
 			RemovePicture(e);
 			PreviewStackPanel[e].RemoveButton.Visibility = Visibility.Hidden;
+		}
+
+		/// <summary>
+		/// パネルの上で左ボタンを押す
+		/// </summary>
+		/// <param name="sender">sender</param>
+		/// <param name="e">event</param>
+		private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) {
+			DragMove();
 		}
 	}
 }

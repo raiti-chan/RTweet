@@ -35,8 +35,8 @@ namespace RTweet {
 		/// スタイル情報を更新します。
 		/// </summary>
 		public void StyleUpdate() {
-			if (Config.Instance.IsStylingAtXAML) {
-				var xamlUri = new Uri(Path.GetFullPath(Config.Instance.xamlFilePath));
+			if (Config.Instance.IsStylingAtXaml) {
+				var xamlUri = new Uri(Path.GetFullPath(Config.Instance.XamlFilePath));
 				if (!File.Exists(xamlUri.AbsolutePath)) {
 					MessageBox.Show("指定されたXAMLファイルが存在しません。\r\nデフォルトスタイルを適用します。", "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
 					return;

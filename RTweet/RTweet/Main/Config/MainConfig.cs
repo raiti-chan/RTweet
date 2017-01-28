@@ -73,14 +73,14 @@ namespace RTweet.Main.Config {
 		/// <summary>
 		/// スタイル定義をXAMLリソースで行うか
 		/// </summary>
-		[JsonProperty(PropertyName = "IsStylingAtXAML")]
-		public bool IsStylingAtXAML { get; set; } = false;
+		[JsonProperty(PropertyName = "isStylingAtXAML")]
+		public bool IsStylingAtXaml { get; set; } = false;
 
 		/// <summary>
 		/// スタイルが定義されたXAMLファイルへのパス
 		/// </summary>
 		[JsonProperty(PropertyName = "xamlFilePath")]
-		public string xamlFilePath { get; set; } = "null";
+		public string XamlFilePath { get; set; } = "null";
 
 		/// <summary>
 		/// アプリケーションのStyle定義ファイル
