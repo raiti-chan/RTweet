@@ -42,6 +42,7 @@ namespace RTweet {
 					return;
 				}
 				UserResourceDictionary.Source = xamlUri;
+				return;
 			}
 
 			var tweetDialogStyle = new Style();
@@ -49,6 +50,7 @@ namespace RTweet {
 				new SolidColorBrush(ColorCodeToColor(Config.Instance.Style.TweetDialogBackgroundColor))));
 			Resources["TweetDialog.Backgrounnd"] = tweetDialogStyle;
 		}
+
 
 		/// <summary>
 		/// カラーコードをカラーオブジェクトに変換します。

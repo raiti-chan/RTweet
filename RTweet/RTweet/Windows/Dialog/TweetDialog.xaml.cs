@@ -20,14 +20,16 @@ namespace RTweet.Windows.Dialog {
 	/// </summary>
 	public partial class TweetDialog {
 		/// <summary>
-		/// ツイートの最大文字数
-		/// </summary>
-		private const int MaxText = 140;
-
-		/// <summary>
 		/// このウインドウが閉じられるか
 		/// </summary>
 		public bool CanClose { get; set; } = true;
+
+		#region PrivateField
+
+		/// <summary>
+		/// ツイートの最大文字数
+		/// </summary>
+		private const int MaxText = 140;
 
 		/// <summary>
 		/// UPする画像
@@ -49,6 +51,7 @@ namespace RTweet.Windows.Dialog {
 		/// </summary>
 		private readonly OpenFileDialog _fileDialog = new OpenFileDialog();
 
+		#endregion
 
 		/// <summary>
 		/// 初期化
@@ -73,7 +76,6 @@ namespace RTweet.Windows.Dialog {
 				Top = MainConfig.Instance.TweetDialogPopuPoint.X;
 				Left = MainConfig.Instance.TweetDialogPopuPoint.Y;
 			}
-
 		}
 
 		/// <summary>
@@ -104,7 +106,6 @@ namespace RTweet.Windows.Dialog {
 			PreviewStackPanel.RemoveImage(index);
 			Width = _upPictures.Count > 0 ? 430 : 310;
 			Picture.IsEnabled = _upPictures.Count < 4;
-
 		}
 
 
