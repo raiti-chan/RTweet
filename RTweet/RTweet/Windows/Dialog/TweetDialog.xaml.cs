@@ -53,6 +53,8 @@ namespace RTweet.Windows.Dialog {
 
 		#endregion
 
+		#region コンストラクタ
+
 		/// <summary>
 		/// 初期化
 		/// </summary>
@@ -62,6 +64,10 @@ namespace RTweet.Windows.Dialog {
 			_fileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
 			Topmost = true;
 		}
+
+		#endregion
+
+		#region publicメソッド
 
 		/// <summary>
 		/// 表示する前の初期化
@@ -78,6 +84,10 @@ namespace RTweet.Windows.Dialog {
 			}
 		}
 
+		#endregion
+
+		#region privateメソッド
+
 		/// <summary>
 		/// 送信レジスターに画像を登録します。
 		/// </summary>
@@ -91,7 +101,7 @@ namespace RTweet.Windows.Dialog {
 					Width = _upPictures.Count > 0 ? 430 : 310;
 				}
 			}
-			Picture.IsEnabled = _upPictures.Count < 4;
+			Media.IsEnabled = _upPictures.Count < 4;
 			Focus();
 			TweetText.Focus();
 			CanClose = true;
@@ -105,16 +115,21 @@ namespace RTweet.Windows.Dialog {
 			_upPictures.RemoveAt(index);
 			PreviewStackPanel.RemoveImage(index);
 			Width = _upPictures.Count > 0 ? 430 : 310;
-			Picture.IsEnabled = _upPictures.Count < 4;
+			Media.IsEnabled = _upPictures.Count < 4;
 		}
-
 
 		/// <summary>
 		/// ウィンドウを閉じようと試みます。
 		/// <see cref="CanClose"/>がfalseの場合閉じません
+		/// オーバーレイコントロールが表示されていた場合オーバーレイコントロールを非表示にします。
 		/// </summary>
 		private void WindowClose() {
 			if (!CanClose) return; //CanCloseがfalseの場合無視
+			if (Overlay.Visibility == Visibility.Visible) {
+				//オーバーレイコントロールが表示されていた場合それを閉じる
+				CloseOverlayControl();
+				return;
+			} 
 			Hide(); //ウィンドウを隠す
 			_upPictures.Clear(); //画像レジスターをクリア
 			PreviewStackPanel.Clear(); //プレビューイメージを初期化
@@ -124,8 +139,27 @@ namespace RTweet.Windows.Dialog {
 			Width = 310;
 		}
 
+		/// <summary>
+		/// コントロールをオーバーレイ表示させます。
+		/// </summary>
+		private void ShowOverlayControl() {
+			Overlay.Visibility = Visibility.Visible;
+		}
+
+		/// <summary>
+		/// オーバーレイ表示されたコントロールを非表示にします。
+		/// </summary>
+		private void CloseOverlayControl() {
+			Overlay.Visibility =Visibility.Hidden;
+		}
+
+		#endregion
+
 		//--------------------------------------------------------------------------------------ここから先はイベントメソッド
 
+		#region Event処理メソッド
+
+		#region WindowEvent
 		/// <summary>
 		/// ウィンドウが非アクティブ化された場合、ウィンドウを閉じます。
 		/// </summary>
@@ -134,6 +168,9 @@ namespace RTweet.Windows.Dialog {
 		private void Window_Deactivated(object sender, EventArgs e) {
 			WindowClose();
 		}
+		#endregion
+
+		#region GridEvent
 
 		/// <summary>
 		/// ツイート入力欄に入力された時のイベント
@@ -165,6 +202,10 @@ namespace RTweet.Windows.Dialog {
 					break;
 			}
 		}
+
+		#endregion
+
+		#region TextBoxEvent
 
 		/// <summary>
 		/// ツイート文入力欄に入力された時のイベント。
@@ -211,6 +252,10 @@ namespace RTweet.Windows.Dialog {
 			WindowClose(); //ウィンドウを閉じる
 		}
 
+		#endregion
+
+		#region ButtonEvent
+
 		/// <summary>
 		/// 画像ボタンのクリック
 		/// </summary>
@@ -231,12 +276,36 @@ namespace RTweet.Windows.Dialog {
 		}
 
 		/// <summary>
-		/// パネルの上で左ボタンを押す
+		/// 下書きボタンのクリック
+		/// </summary>
+		/// <param name="sender">sender</param>
+		/// <param name="e">event</param>
+		private void Draft_Click(object sender, RoutedEventArgs e) {
+			ShowOverlayControl();
+		}
+
+		#endregion
+
+		/// <summary>
+		/// パネルの上で左ボタンを押す。
+		/// ドラッグ処理
 		/// </summary>
 		/// <param name="sender">sender</param>
 		/// <param name="e">event</param>
 		private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) {
 			DragMove();
 		}
+
+
+		/// <summary>
+		/// オーバーレイコントロール外が押された
+		/// </summary>
+		/// <param name="sender">sender</param>
+		/// <param name="e">event</param>
+		private void Overlay_MouseDown(object sender, MouseButtonEventArgs e) {
+			CloseOverlayControl();
+		}
+
+		#endregion
 	}
 }

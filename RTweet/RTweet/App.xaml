@@ -161,6 +161,9 @@
                             </RepeatButton>
                             <Track x:Name="PART_Track" IsDirectionReversed="true"
                                    IsEnabled="{TemplateBinding IsMouseOver}" Grid.Row="1">
+                                <Track.Resources>
+                                    <system:Double x:Key="{x:Static SystemParameters.VerticalScrollBarButtonHeightKey}">40</system:Double>
+                                </Track.Resources>
                                 <Track.DecreaseRepeatButton>
                                     <RepeatButton Command="{x:Static ScrollBar.PageUpCommand}"
                                                   Style="{StaticResource TweetDialog.PicturePreviewPanelScrollBar.RepeatButton.Transparent}" />
@@ -263,6 +266,9 @@
                             </RepeatButton>
                             <Track x:Name="PART_Track" Grid.Column="1"
                                    IsEnabled="{TemplateBinding IsMouseOver}">
+                                <Track.Resources>
+                                    <system:Double x:Key="{x:Static SystemParameters.HorizontalScrollBarButtonWidthKey}">40</system:Double>
+                                </Track.Resources>
                                 <Track.DecreaseRepeatButton>
                                     <RepeatButton Command="{x:Static ScrollBar.PageLeftCommand}"
                                                   Style="{StaticResource TweetDialog.PicturePreviewPanelScrollBar.RepeatButton.Transparent}" />

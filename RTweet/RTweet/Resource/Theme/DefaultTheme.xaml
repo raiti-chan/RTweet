@@ -1,6 +1,10 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+    <!--#region ブラシ-->
+    <SolidColorBrush x:Key="CoverColor" Color="#66000000"/>
+    <!--#endregion-->
+    
     <!--#region ツイートダイアログの背景-->
     <Style x:Key="TweetDialog.Backgrounnd" TargetType="Border">
         <Setter Property="Background" Value="#FFFFFFFF" />
@@ -111,5 +115,5 @@
         </Setter>
     </Style>
     <!--#endregion-->
-
+    
 </ResourceDictionary>
