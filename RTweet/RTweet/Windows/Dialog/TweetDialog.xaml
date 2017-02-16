@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:control="clr-namespace:RTweet.Windows.Control" x:Class="RTweet.Windows.Dialog.TweetDialog"
+    xmlns:control="clr-namespace:RTweet.Windows.Controls" x:Class="RTweet.Windows.Dialog.TweetDialog"
     mc:Ignorable="d"
     Title="TweetDialog" Height="270" Width="310" WindowStyle="None" AllowsTransparency="True" Background="Transparent"
     Deactivated="Window_Deactivated">
@@ -28,13 +28,12 @@
             <ScrollViewer HorizontalAlignment="Left" Margin="305,10,-115,10" Width="120"
                           VerticalScrollBarVisibility="Auto"
                           Template="{DynamicResource TweetDialog.PicturePreviewPanelScrollViewer}">
-                <control:PicturePreviewStackPanel x:Name="PreviewStackPanel"
-                                                  RemoveClick="PreviewStackPanel_RemoveClick" />
+                <control:PicturePreviewStackPanelControl x:Name="PreviewStackPanel" RemoveClick="PreviewStackPanel_RemoveClick" />
             </ScrollViewer>
             <Label Content="ツイート" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14.667"
                    Margin="10,5,0,0" />
-            
-            <Button x:Name="Draft" HorizontalAlignment="Right" Margin="0,8,8,0" VerticalAlignment="Top" Width="22"
+
+            <Button x:Name="Draft" HorizontalAlignment="Left" Margin="280,8,0,0" VerticalAlignment="Top" Width="22"
                     Height="22" Style="{DynamicResource TweetDialog.Draft.Button}" ToolTip="下書き" Click="Draft_Click"/>
             <Rectangle x:Name="Overlay" Margin="0,0,0,0" Fill="{StaticResource CoverColor}" RadiusX="10" RadiusY="10" Visibility="Hidden" MouseDown="Overlay_MouseDown"/>
 

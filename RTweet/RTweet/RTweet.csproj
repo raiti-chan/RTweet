@@ -95,6 +95,7 @@
     <Compile Include="Main\Config\StyleProperty.cs" />
     <Compile Include="Main\GetShell32Icon.cs" />
     <Compile Include="Main\HotKey.cs" />
+    <Compile Include="Main\Twitter\DraftContents.cs" />
     <Compile Include="Main\Twitter\TwitterSystem.cs" />
     <Compile Include="Main\Twitter\TwitterSystemPrivate.cs" />
     <Compile Include="Main\Twitter\UserToken.cs" />
@@ -104,6 +105,14 @@
     </Compile>
     <Compile Include="Windows\AppNotifyIcon.Designer.cs">
       <DependentUpon>AppNotifyIcon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Controls\PicturePreviewPanelControl.cs" />
+    <Compile Include="Windows\Controls\PicturePreviewStackPanelControl.cs" />
+    <Compile Include="Windows\Control\DraftList.xaml.cs">
+      <DependentUpon>DraftList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Control\DraftListItem.xaml.cs">
+      <DependentUpon>DraftListItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Control\PicturePreviewPanel.xaml.cs">
       <DependentUpon>PicturePreviewPanel.xaml</DependentUpon>
@@ -137,6 +146,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Resource>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Control\DraftList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Control\DraftListItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Control\PicturePreviewPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

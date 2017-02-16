@@ -272,7 +272,6 @@ namespace RTweet.Windows.Dialog {
 		/// <param name="e">発信元インデックス</param>
 		private void PreviewStackPanel_RemoveClick(object sender, int e) {
 			RemovePicture(e);
-			PreviewStackPanel[e].RemoveButton.Visibility = Visibility.Hidden;
 		}
 
 		/// <summary>
