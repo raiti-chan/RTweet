@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -106,19 +106,15 @@
     <Compile Include="Windows\AppNotifyIcon.Designer.cs">
       <DependentUpon>AppNotifyIcon.cs</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Controls\WindowPanelBase.cs" />
     <Compile Include="Windows\Controls\PicturePreviewPanelControl.cs" />
     <Compile Include="Windows\Controls\PicturePreviewStackPanelControl.cs" />
+    <Compile Include="Windows\Controls\TweetDialogControl.cs" />
     <Compile Include="Windows\Control\DraftList.xaml.cs">
       <DependentUpon>DraftList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Control\DraftListItem.xaml.cs">
       <DependentUpon>DraftListItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Control\PicturePreviewPanel.xaml.cs">
-      <DependentUpon>PicturePreviewPanel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Control\PicturePreviewStackPanel.xaml.cs">
-      <DependentUpon>PicturePreviewStackPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Control\Setting\SettingCategoryList.xaml.cs">
       <DependentUpon>SettingCategoryList.xaml</DependentUpon>
@@ -132,6 +128,7 @@
     <Compile Include="Windows\Dialog\TweetDialog.xaml.cs">
       <DependentUpon>TweetDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\GenericWindow.cs" />
     <Compile Include="Windows\KeySettingWindow.xaml.cs">
       <DependentUpon>KeySettingWindow.xaml</DependentUpon>
     </Compile>
@@ -155,14 +152,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Control\DraftListItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\Control\PicturePreviewPanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\Control\PicturePreviewStackPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -246,7 +235,9 @@
   <ItemGroup>
     <Resource Include="appIcon_32x32.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Util\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

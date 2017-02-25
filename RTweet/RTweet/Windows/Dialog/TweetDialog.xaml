@@ -9,7 +9,7 @@
     Deactivated="Window_Deactivated">
     <Window.Resources>
     </Window.Resources>
-    <Border CornerRadius="10" x:Name="Border" Style="{DynamicResource TweetDialog.Backgrounnd}"
+    <Border CornerRadius="10"  x:Name="Border" Style="{DynamicResource TweetDialog.Backgrounnd}"
             MouseLeftButtonDown="Border_MouseLeftButtonDown">
         <Grid KeyDown="Grid_KeyDown" PreviewTextInput="Grid_PreviewTextInput">
             <TextBox x:Name="TweetText" Margin="10,40,0,40" TextWrapping="Wrap" Text="" AcceptsReturn="True"

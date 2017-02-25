@@ -36,11 +36,21 @@ namespace RTweet.Windows.Controls {
 	///
 	/// </summary>
 	public class PicturePreviewStackPanelControl : System.Windows.Controls.Control {
-		#region 自動生成
+		#region コンストラクタ
 
+		/// <summary>
+		/// staticコンストラクタ
+		/// </summary>
 		static PicturePreviewStackPanelControl() {
 			DefaultStyleKeyProperty.OverrideMetadata(typeof(PicturePreviewStackPanelControl),
 				new FrameworkPropertyMetadata(typeof(PicturePreviewStackPanelControl)));
+		}
+
+		/// <summary>
+		/// 初期化
+		/// </summary>
+		public PicturePreviewStackPanelControl() {
+			Height = 0;
 		}
 
 		#endregion
@@ -146,13 +156,6 @@ namespace RTweet.Windows.Controls {
 		#endregion
 
 		/// <summary>
-		/// 初期化
-		/// </summary>
-		public PicturePreviewStackPanelControl() {
-			Height = 0;
-		}
-
-		/// <summary>
 		/// テンプレートが更新された時に実行されます。
 		/// </summary>
 		public override void OnApplyTemplate() {
@@ -228,5 +231,17 @@ namespace RTweet.Windows.Controls {
 			Count = 0;
 			Height = 0;
 		}
+
+		/// <summary>
+		/// イメージの配列を取得します。
+		/// イメージオブジェクトはコピーされません
+		/// </summary>
+		/// <returns></returns>
+		public BitmapImage[] GetBitmapImages() {
+			var returnImages = new BitmapImage[Count];
+			for (var i = 0; i < Count; i++) returnImages[i] = _images[_links[i]];
+			return returnImages;
+		}
+		
 	}
 }

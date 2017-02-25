@@ -10,7 +10,7 @@ using System.Windows.Media.Imaging;
 using RTweet.Main;
 using RTweet.Main.Config;
 using RTweet.Main.Twitter;
-using RTweet.Windows.Dialog;
+using RTweet.Windows.Controls;
 using static RTweet.Main.Twitter.TwitterSystem;
 
 namespace RTweet.Windows{
@@ -77,7 +77,7 @@ namespace RTweet.Windows{
 			UserImage.Source = userIcon;
 		}
 
-		private readonly TweetDialog _tweetWindw = new TweetDialog();
+		private readonly GenericWindow _tweetWindw = new GenericWindow(new TweetDialogControl());
 
 		private void HotKeyPush(object sender) {
 			_tweetWindw.ShowInit();

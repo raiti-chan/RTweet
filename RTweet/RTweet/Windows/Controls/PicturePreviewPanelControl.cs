@@ -37,14 +37,30 @@ namespace RTweet.Windows.Controls {
 	///
 	/// </summary>
 	public class PicturePreviewPanelControl : System.Windows.Controls.Control {
-		#region 自動生成
+		#region コンストラクタ
 
 		/// <summary>
-		/// staticイニシャライザ
+		/// staticコンストラクタ
 		/// </summary>
 		static PicturePreviewPanelControl() {
 			DefaultStyleKeyProperty.OverrideMetadata(typeof(PicturePreviewPanelControl), new FrameworkPropertyMetadata(typeof(PicturePreviewPanelControl)));
 		}
+
+		/// <summary>
+		/// 初期化
+		/// <param name="index">この要素のインデックス。デフォルト0</param>
+		/// <exception cref="ArgumentOutOfRangeException">indexが0以下の場合スローされます</exception>
+		/// </summary>
+		public PicturePreviewPanelControl(int index) {
+			if (index < 0) throw new ArgumentOutOfRangeException(nameof(index));
+			Index = index;
+			Height = 0;
+		}
+
+		/// <summary>
+		/// 初期化
+		/// </summary>
+		public PicturePreviewPanelControl() {}
 
 		#endregion
 
@@ -89,22 +105,6 @@ namespace RTweet.Windows.Controls {
 		private RoutedEventHandler _eventHandler;
 
 		#endregion
-
-		/// <summary>
-		/// 初期化
-		/// <param name="index">この要素のインデックス。デフォルト0</param>
-		/// <exception cref="ArgumentOutOfRangeException">indexが0以下の場合スローされます</exception>
-		/// </summary>
-		public PicturePreviewPanelControl(int index) {
-			if (index < 0) throw new ArgumentOutOfRangeException(nameof(index));
-			Index = index;
-			Height = 0;
-		}
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		public PicturePreviewPanelControl() {}
 
 		/// <summary>
 		/// テンプレートの行進が発生したとき実行される
