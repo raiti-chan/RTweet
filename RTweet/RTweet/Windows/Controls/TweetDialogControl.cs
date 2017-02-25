@@ -398,8 +398,8 @@ namespace RTweet.Windows.Controls {
 				ParentWindow.Left = devicePoint.X + MainConfig.Instance.TweetDialogPopuPoint.X;
 				//PresentationSource.FromVisual(this).CompositionTarget.TransformFromDevice(null);
 			} else {
-				Top = MainConfig.Instance.TweetDialogPopuPoint.X;
-				Left = MainConfig.Instance.TweetDialogPopuPoint.Y;
+				ParentWindow.Top = MainConfig.Instance.TweetDialogPopuPoint.X;
+				ParentWindow.Left = MainConfig.Instance.TweetDialogPopuPoint.Y;
 			}
 		}
 

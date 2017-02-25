@@ -24,30 +24,7 @@ namespace RTweet.Windows {
 			AddChild(panel);
 			WindowContent = panel;
 
-			SetBinding(AllowsTransparencyProperty, new Binding {Source = panel, Path = new PropertyPath("AllowsTransparency")});
-			SetBinding(IconProperty, new Binding {Source = panel, Path = new PropertyPath("Icon")});
-			SetBinding(LeftProperty, new Binding {Source = panel, Path = new PropertyPath("Left")});
-			SetBinding(ResizeModeProperty, new Binding {Source = panel, Path = new PropertyPath("ResizeMode")});
-			SetBinding(ShowActivatedProperty, new Binding {Source = panel, Path = new PropertyPath("ShowActivated")});
-			SetBinding(ShowInTaskbarProperty, new Binding {Source = panel, Path = new PropertyPath("ShowInTaskbar")});
-			SetBinding(SizeToContentProperty, new Binding {Source = panel, Path = new PropertyPath("SizeToContent")});
-			SetBinding(TaskbarItemInfoProperty, new Binding {Source = panel, Path = new PropertyPath("TaskbarItemInfo")});
-			SetBinding(TitleProperty, new Binding {Source = panel, Path = new PropertyPath("Title")});
-			SetBinding(TopProperty, new Binding {Source = panel, Path = new PropertyPath("Top")});
-			SetBinding(TopmostProperty, new Binding {Source = panel, Path = new PropertyPath("Topmost")});
-			SetBinding(WindowStateProperty, new Binding {Source = panel, Path = new PropertyPath("WindowState")});
-			SetBinding(WindowStyleProperty, new Binding {Source = panel, Path = new PropertyPath("WindowStyle")});
-			/*
-			SetBinding(MaxHeightProperty, new Binding {Source = panel, Path = new PropertyPath("Height"), Mode = BindingMode.TwoWay});
-			SetBinding(MaxWidthProperty, new Binding {Source = panel, Path = new PropertyPath("Width"), Mode = BindingMode.TwoWay});
-			SetBinding(MinHeightProperty, new Binding {Source = panel, Path = new PropertyPath("Height"), Mode = BindingMode.TwoWay});
-			SetBinding(MinWidthProperty, new Binding {Source = panel, Path = new PropertyPath("Width"), Mode = BindingMode.TwoWay});
-			*/
-			SetBinding(HeightProperty, new Binding {Source = panel, Path = new PropertyPath("Height"), Mode = BindingMode.TwoWay});
-			SetBinding(WidthProperty, new Binding {Source = panel, Path = new PropertyPath("Width"), Mode = BindingMode.TwoWay});
-			
-			//Background = null;
-			//Foreground = null;
+			SetBinding(StyleProperty, new Binding {Source = panel, Path = new PropertyPath("ParentWindowStyle")});
 
 		}
 

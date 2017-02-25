@@ -39,13 +39,17 @@
 
     <!--#region TweetDialogControl-->
     <Style TargetType="{x:Type local:TweetDialogControl}">
-        <Setter Property="Height" Value="270" />
-        <Setter Property="Width" Value="310" />
-        <Setter Property="WindowStyle" Value="None" />
-        <Setter Property="AllowsTransparency" Value="True" />
-        <Setter Property="SizeToContent" Value="Manual" />
-        <Setter Property="ResizeMode" Value="NoResize" />
-        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="ParentWindowStyle">
+            <Setter.Value>
+                <Style TargetType="{x:Type Window}">
+                    <Setter Property="WindowStyle" Value="None" />
+                    <Setter Property="ResizeMode" Value="NoResize" />
+                    <Setter Property="AllowsTransparency" Value="True" />
+                    <Setter Property="Background" Value="{x:Null}" />
+                    <Setter Property="SizeToContent" Value="WidthAndHeight" />
+                </Style>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:TweetDialogControl}">
@@ -100,11 +104,11 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="Height" Value="270" />
+        <Setter Property="Width" Value="310" />
         <Style.Triggers>
             <Trigger Property="IsNonPicture" Value="False">
-                <Trigger.Setters>
-                    <Setter Property="Width" Value="430"></Setter>
-                </Trigger.Setters>
+                <Setter Property="Width" Value="430" />
             </Trigger>
         </Style.Triggers>
     </Style>
